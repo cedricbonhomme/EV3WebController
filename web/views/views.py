@@ -22,8 +22,6 @@ from flask import render_template, current_app, request, flash, session, \
     url_for, redirect, g, send_from_directory, make_response, abort, Markup
 from flask.ext.login import LoginManager, login_user, logout_user, \
     login_required, current_user, AnonymousUserMixin
-from flask.ext.principal import Principal, Identity, AnonymousIdentity, \
-    identity_changed, identity_loaded, Permission, RoleNeed, UserNeed
 
 import conf
 from web.decorators import to_response
@@ -51,35 +49,10 @@ def redirect_url(default='profile'):
            request.referrer or \
            url_for(default)
 
-#
-# Management of the permissions
-#
-principals = Principal(app)
-
-# Create a permission with an admin role's need
-admin_permission = Permission(RoleNeed('admin'))
-
 login_manager = LoginManager(app)
 login_manager.login_view = 'login'
 login_manager.login_message = 'Please log in to access this page.'
 login_manager.login_message_category = 'danger'
-
-
-@identity_loaded.connect_via(app)
-def on_identity_loaded(sender, identity):
-    # Set the identity user object
-    g.user = current_user
-    identity.user = current_user
-
-    # Add the UserNeed to the identity
-    if hasattr(current_user, 'id'):
-        identity.provides.add(UserNeed(current_user.id))
-
-    # Assuming the User model has a list of roles, update the
-    # identity with the roles that the user provides
-    if hasattr(current_user, 'roles'):
-        for role in current_user.roles:
-            identity.provides.add(RoleNeed(role.name))
 
 
 @app.errorhandler(403)
