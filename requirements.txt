@@ -1,7 +1,4 @@
 smbus-cffi
 python-ev3
-itsdangerous
 Flask
-Flask-RESTful
 Flask-Login
-Flask-Principal

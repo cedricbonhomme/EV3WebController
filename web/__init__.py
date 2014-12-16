@@ -14,10 +14,10 @@ import os
 from flask import Flask
 
 #from ev3.ev3dev import Ev3Dev
-from ev3.ev3dev import Key, Motor
-from ev3.lego import LargeMotor
+#from ev3.ev3dev import Key, Motor
+"""from ev3.lego import LargeMotor
 from ev3.lego import TouchSensor
-from ev3.lego import InfraredSensor
+from ev3.lego import InfraredSensor"""
 
 import conf
 
