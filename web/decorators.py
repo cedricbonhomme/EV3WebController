@@ -3,7 +3,7 @@
 
 # ***** BEGIN LICENSE BLOCK *****
 # This file is part of EV3WebController.
-# Copyright (c) 2014 Cédric Bonhomme.
+# Copyright (c) 2014-2015 Cédric Bonhomme.
 # All rights reserved.
 #
 #

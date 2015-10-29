@@ -57,7 +57,7 @@ Acceptable values for *sensor_name*:
 
 cve-search is free software released under the "Modified BSD license"
 
-Copyright (c) 2013-2015 Cédric Bonhomme - https://www.cedricbonhomme.org
+Copyright (c) 2014-2015 Cédric Bonhomme - https://www.cedricbonhomme.org
 
 # Contact
 
