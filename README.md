@@ -3,8 +3,8 @@ EV3WebController
 
 # Presentation
 
-This application based on the [Flask](http://flask.pocoo.org/)
-microframework provides an interface in order to control the EV3 robot.
+[EV3WebController](https://bitbucket.org/cedricbonhomme/ev3webcontroller)
+provides a Web interface in order to control the Lego Mindstorms EV3 robot.
 
 Tested with Python 3.4 and Python 2.7.
 
@@ -14,7 +14,7 @@ First, install [ev3dev](http://www.ev3dev.org) on your
 Lego Mindstorms EV3 brick.
 
 For the network I recommend the Wireless Nano Adapter *Edimax EW-7811Un* which
-is working out of the box.
+is working perfectly out of the box.
 
 Then on the robot:
 
@@ -75,6 +75,11 @@ Acceptable values for *sensor_name*:
     $ GET http://username:password@192.168.1.10:5000/sensor/ir_sensor
     {"distance": 12}
 
+# Donation
+
+If you wish and if you like *EV3WebController*, you can donate via bitcoin
+[1GVmhR9fbBeEh7rP1qNq76jWArDdDQ3otZ](https://blockexplorer.com/address/1GVmhR9fbBeEh7rP1qNq76jWArDdDQ3otZ).
+Thank you!
 
 # License
 
