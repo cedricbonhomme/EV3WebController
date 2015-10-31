@@ -26,6 +26,7 @@ Then on the robot:
     $ rm master.tar.gz
     $ cd cedricbonhomme-ev3webcontroller-*
     $ pip install -r requirements.txt
+    $ cp conf/conf.cfg-sample conf/conf.cfg
 
 Launch the web server:
 
@@ -35,7 +36,7 @@ Launch the web server:
 
 ## Move the robot
 
-    $ GET http://192.168.1.10:5000/move/<direction>/<speed=60>
+    $ GET http://192.168.1.16:5000/move/<direction>/<speed=60>
 
 The value of *speed* is optional. Default is 60.
 
@@ -49,12 +50,12 @@ Acceptable values for *direction*:
 
 ### Examples
 
-    $ GET http://username:password@192.168.1.10:5000/move/forward/50
+    $ GET http://192.168.1.16:5000/move/forward/50
     {"message": "OK", "direction": "forward", "action": "move"}
 
 In this case the HTTP status code returned is 200.
 
-    $ GET http://127.0.0.1:5000/move/nowhere
+    $ GET http://192.168.1.16:5000/move/nowhere
     {"message": "Unknown direction", "direction": "nowhere", "action": "move"}
 
 In this case the HTTP status code returned is 400.
@@ -62,7 +63,7 @@ In this case the HTTP status code returned is 400.
 
 ## Retrieve values from sensors
 
-    $ GET http://192.168.1.10:5000/sensor/<sensor_name>
+    $ GET http://192.168.1.16:5000/sensor/<sensor_name>
 
 Acceptable values for *sensor_name*:
 
@@ -71,7 +72,7 @@ Acceptable values for *sensor_name*:
 
 ### Examples
 
-    $ GET http://username:password@192.168.1.10:5000/sensor/ir_sensor
+    $ GET http://192.168.1.16:5000/sensor/ir_sensor
     {"distance": 12}
 
 # Donation
