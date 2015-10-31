@@ -8,6 +8,29 @@ microframework provides an interface in order to control the EV3 robot.
 
 Tested with Python 3.4 and Python 2.7.
 
+# Installation
+
+First, install [ev3dev](http://www.ev3dev.org) on your
+Lego Mindstorms EV3 brick.
+
+For the network I recommend the Wireless Nano Adapter *Edimax EW-7811Un* which
+is working out of the box.
+
+Then on the robot:
+
+    $ ssh root@192.168.1.16
+    $ wget https://bootstrap.pypa.io/get-pip.py
+    $ python get-pip.py
+    $ wget https://bitbucket.org/cedricbonhomme/ev3webcontroller/get/master.tar.gz
+    $ tar -xzvf master.tar.gz
+    $ rm master.tar.gz
+    $ cd cedricbonhomme-ev3webcontroller-*
+    $ pip install -r requirements.txt
+
+Launch the web server:
+
+    $ python runserver.py
+
 # How to use the interface
 
 ## Move the robot
