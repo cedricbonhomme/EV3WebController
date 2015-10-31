@@ -20,10 +20,10 @@ import os, sys
 BASE_DIR = os.path.abspath(os.path.dirname(__file__))
 PATH = os.path.abspath(".")
 
-DEFAULTS = {"platform_url": "http://0.0.0.0:5000",
+DEFAULTS = {"robot_external_address": "http://0.0.0.0:5000",
             "host": "0.0.0.0",
             "port": "5000",
-            "https": "true",
+            "https": "false",
             "debug": "true"
             }
 
@@ -35,7 +35,7 @@ except:
 config = confparser.SafeConfigParser(defaults=DEFAULTS)
 config.read(os.path.join(BASE_DIR, "conf/conf.cfg"))
 
-PLATFORM_URL = config.get('misc', 'platform_url')
+ROBOT_EXTERNAL_ADDRESS = config.get('misc', 'robot_external_address')
 
 WEBSERVER_DEBUG = config.getboolean('webserver', 'debug')
 WEBSERVER_HOST = config.get('webserver', 'host')

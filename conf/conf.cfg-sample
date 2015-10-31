@@ -1,5 +1,5 @@
 [misc]
-platform_url = http://0.0.0.0:5000
+robot_external_address = http://0.0.0.0:5000
 [webserver]
 debug = 1
 host = 0.0.0.0
