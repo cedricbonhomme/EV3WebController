@@ -13,7 +13,6 @@
 import os
 from flask import Flask
 
-#from ev3.ev3dev import Ev3Dev
 from ev3.ev3dev import Key, Motor
 from ev3.lego import LargeMotor
 from ev3.lego import TouchSensor
@@ -28,7 +27,6 @@ app.debug = True
 # Create a random secrey key so we can use sessions
 app.config['SECRET_KEY'] = os.urandom(12)
 
-#Ev3Dev.__init__()
 #head = None#Motor(port=Motor.PORT.A)
 right_wheel = None
 left_wheel  = None
@@ -39,7 +37,7 @@ try:
     left_wheel  = Motor(port=Motor.PORT.C)
     button = TouchSensor()
     ir_sensor = InfraredSensor()
-except Exception:
-    print("You must run the application as root on the EV3.")
+except Exception as e:
+    raise Exception('You must run the application on the EV3.')
 
 from web import views

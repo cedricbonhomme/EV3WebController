@@ -11,9 +11,9 @@
 # ***** END LICENSE BLOCK *****
 
 __author__ = "Cedric Bonhomme"
-__version__ = "$Revision: 0.2 $"
+__version__ = "$Revision: 0.3 $"
 __date__ = "$Date: 2014/12/15$"
-__revision__ = "$Date: 2015/10/29 $"
+__revision__ = "$Date: 2015/10/31 $"
 __copyright__ = "Copyright (c) 2014-2015 Cédric BOnhomme"
 __license__ = ""
 
@@ -46,10 +46,6 @@ def authentication_required(e):
 def load_user(id):
     # Return an instance of the User model
     return models.User.objects(id=id).first()
-
-@app.before_request
-def before_request():
-    g.user = current_user
 
 
 @app.route('/move/<direction>', methods=['GET'])
