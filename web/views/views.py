@@ -28,19 +28,19 @@ from web import app
 from web import right_wheel, left_wheel, button, ir_sensor
 
 login_manager = LoginManager(app)
-login_manager.login_view = 'login'
+login_manager.login_view = 'index'
 login_manager.login_message = 'Please log in to access this page.'
 login_manager.login_message_category = 'danger'
 
 @app.errorhandler(403)
 def authentication_failed(e):
     flash('You do not have enough rights.', 'danger')
-    return redirect(url_for('about'))
+    return redirect(url_for('index'))
 
 @app.errorhandler(401)
 def authentication_required(e):
     flash('Authenticated required.', 'info')
-    return redirect(url_for('about'))
+    return redirect(url_for('index'))
 
 @login_manager.user_loader
 def load_user(id):
@@ -103,6 +103,6 @@ def sensor(sensor_name=""):
         return {"message": "Unknown sensor"}, 400
 
 
-@app.route('/about', methods=['GET'])
-def about():
-    return render_template('about.html')
+@app.route('/', methods=['GET'])
+def index():
+    return render_template('index.html')
