@@ -69,7 +69,6 @@ Acceptable values for *sensor_name*:
 * button;
 * ir_sensor.
 
-
 ### Examples
 
     $ GET http://username:password@192.168.1.10:5000/sensor/ir_sensor
@@ -83,7 +82,7 @@ Thank you!
 
 # License
 
-cve-search is free software released under the "Modified BSD license"
+EV3WebController is free software released under the "Modified BSD license"
 
 Copyright (c) 2014-2015 Cédric Bonhomme - https://www.cedricbonhomme.org
 
