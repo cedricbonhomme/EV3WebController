@@ -45,7 +45,8 @@ def authentication_required(e):
 @login_manager.user_loader
 def load_user(id):
     # Return an instance of the User model
-    return models.User.objects(id=id).first()
+    #return models.User.objects(id=id).first()
+    pass
 
 
 @app.route('/move/<direction>', methods=['GET'])
