@@ -26,6 +26,13 @@ Then on the robot:
     $ rm master.tar.gz
     $ cd cedricbonhomme-ev3webcontroller-*
     $ pip install -r requirements.txt
+    $ wget https://github.com/topikachu/python-ev3/archive/master.tar.gz
+    $ tar -xzvf master.tar.gz
+    $ rm master.tar.gz
+    $ cd python-ev3-master/
+    $ python setup.py install
+    $ cd ..
+    $ rm -Rf python-ev3-master/
     $ cp conf/conf.cfg-sample conf/conf.cfg
 
 Launch the web server:
