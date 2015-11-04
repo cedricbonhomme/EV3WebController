@@ -38,6 +38,6 @@ try:
     button = TouchSensor()
     ir_sensor = InfraredSensor()
 except Exception as e:
-    raise Exception('You must run the application on the EV3.')
+    pass#raise Exception('You must run the application on the EV3.')
 
 from web import views

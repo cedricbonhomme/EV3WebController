@@ -17,7 +17,7 @@ Required imports and code execution for basic functionning.
 
 import os
 if os.geteuid() != 0:
-    raise Exception('You must run the application as root on the EV3.')
+    pass#raise Exception('You must run the application as root on the EV3.')
 import sys
 if 'threading' in sys.modules:
     raise Exception('threading module loaded before patching!')
