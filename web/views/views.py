@@ -81,11 +81,20 @@ def move(direction="forward", speed=800):
             right_wheel.run_forever(speed * 1, regulation_mode=False)
 
     elif direction == 'backward':
-        try:
+        nb_blocks = request.args.get("blocks", None)
+        if None is not nb_blocks:
+            position = int(nb_blocks) * -360
+            left_wheel.position = 0
+            left_wheel.run_position_limited(position_sp=position, speed_sp=800,
+                           stop_mode=Motor.STOP_MODE.BRAKE, ramp_up_sp=1000,
+                           ramp_down_sp=1000)
+            right_wheel.position = 0
+            right_wheel.run_position_limited(position_sp=position, speed_sp=800,
+                           stop_mode=Motor.STOP_MODE.BRAKE, ramp_up_sp=1000,
+                           amp_down_sp=1000)
+        else:
             left_wheel.run_forever(speed * -1, regulation_mode=False)
             right_wheel.run_forever(speed * -1, regulation_mode=False)
-        except Exception as e:
-            result["message"], return_code = "error", 400
 
     elif direction == 'left':
         left_wheel.run_forever(speed, regulation_mode=False)
