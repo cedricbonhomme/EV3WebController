@@ -22,6 +22,8 @@ from flask import render_template, current_app, request, session, \
 from flask.ext.login import LoginManager, login_user, logout_user, \
     login_required, current_user, AnonymousUserMixin
 
+from ev3.ev3dev import Motor
+
 import conf
 from web.decorators import to_response
 from web import app
@@ -52,7 +54,7 @@ def load_user(id):
 @app.route('/move/<direction>', methods=['GET'])
 @app.route('/move/<direction>/<speed>', methods=['GET'])
 @to_response
-def move(direction="forward", speed=60):
+def move(direction="forward", speed=800):
     """
     """
     result = {
@@ -63,8 +65,20 @@ def move(direction="forward", speed=60):
     return_code = 200
 
     if direction == 'forward':
-        left_wheel.run_forever(speed * 1, regulation_mode=False)
-        right_wheel.run_forever(speed * 1, regulation_mode=False)
+        nb_blocks = request.args.get("blocks", None)
+        if None is not nb_blocks:
+            position = int(nb_blocks) * 360
+            left_wheel.position = 0
+            left_wheel.run_position_limited(position_sp=position, speed_sp=800,
+                           stop_mode=Motor.STOP_MODE.BRAKE, ramp_up_sp=1000,
+                           ramp_down_sp=1000)
+            right_wheel.position = 0
+            right_wheel.run_position_limited(position_sp=position, speed_sp=800,
+                           stop_mode=Motor.STOP_MODE.BRAKE, ramp_up_sp=1000,
+                           amp_down_sp=1000)
+        else:
+            left_wheel.run_forever(speed * 1, regulation_mode=False)
+            right_wheel.run_forever(speed * 1, regulation_mode=False)
 
     elif direction == 'backward':
         try:

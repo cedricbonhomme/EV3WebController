@@ -34,7 +34,7 @@ button = None
 ir_sensor = None
 try:
     right_wheel = Motor(port=Motor.PORT.B)
-    left_wheel  = Motor(port=Motor.PORT.C)
+    left_wheel = Motor(port=Motor.PORT.C)
     button = TouchSensor()
     ir_sensor = InfraredSensor()
 except Exception as e:

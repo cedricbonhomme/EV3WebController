@@ -5,7 +5,7 @@ $(document).ready(function() {
         console.log('ArrowUp down')
         var ip = document.domain
         var power = 60
-        var ajax_url = "http://" + ip + ":5000/move/forward/" + power
+        var ajax_url = "http://" + ip + ":5000/move/forward"
 
         $.ajax({
             type: "GET",
@@ -22,7 +22,7 @@ $(document).ready(function() {
         console.log('ArrowDown down')
         var ip = document.domain
         var power = 60
-        var ajax_url = "http://" + ip + ":5000/move/backward/" + power
+        var ajax_url = "http://" + ip + ":5000/move/backward"
 
         $.ajax({
             type: "GET",
@@ -39,7 +39,7 @@ $(document).ready(function() {
         console.log('ArrowLeft down')
         var ip = document.domain
         var power = 60
-        var ajax_url = "http://" + ip + ":5000/move/left/" + power
+        var ajax_url = "http://" + ip + ":5000/move/left"
 
         $.ajax({
             type: "GET",
@@ -56,7 +56,7 @@ $(document).ready(function() {
         console.log('ArrowRight down')
         var ip = document.domain
         var power = 60
-        var ajax_url = "http://" + ip + ":5000/move/right/" + power
+        var ajax_url = "http://" + ip + ":5000/move/right"
 
         $.ajax({
             type: "GET",
