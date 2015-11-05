@@ -17,6 +17,7 @@ __revision__ = "$Date: 2015/11/04 $"
 __copyright__ = "Copyright (c) 2014-2015 Cédric Bonhomme"
 __license__ = ""
 
+import time
 from flask import render_template, current_app, request, session, \
     url_for, redirect, g, send_from_directory, make_response, abort, Markup
 from flask.ext.login import LoginManager, login_user, logout_user, \
@@ -26,6 +27,7 @@ from ev3.ev3dev import Motor
 
 import conf
 from web.decorators import to_response
+from web.lib import movements
 from web import app
 from web.lib import movements
 from web import right_wheel, left_wheel, button, ir_sensor, color_sensor
@@ -69,14 +71,8 @@ def move(direction="forward", speed=800):
         nb_blocks = request.args.get("blocks", None)
         if None is not nb_blocks:
             position = int(nb_blocks) * 360
-            left_wheel.position = 0
-            left_wheel.run_position_limited(position_sp=position, speed_sp=800,
-                           stop_mode=Motor.STOP_MODE.BRAKE, ramp_up_sp=1000,
-                           ramp_down_sp=1000)
-            right_wheel.position = 0
-            right_wheel.run_position_limited(position_sp=position, speed_sp=800,
-                           stop_mode=Motor.STOP_MODE.BRAKE, ramp_up_sp=1000,
-                           amp_down_sp=1000)
+            result["message"] = movements.run_position_limited(left_wheel,
+                                                        right_wheel, position)
         else:
             left_wheel.run_forever(speed * 1, regulation_mode=False)
             right_wheel.run_forever(speed * 1, regulation_mode=False)
@@ -85,14 +81,8 @@ def move(direction="forward", speed=800):
         nb_blocks = request.args.get("blocks", None)
         if None is not nb_blocks:
             position = int(nb_blocks) * -360
-            left_wheel.position = 0
-            left_wheel.run_position_limited(position_sp=position, speed_sp=800,
-                           stop_mode=Motor.STOP_MODE.BRAKE, ramp_up_sp=1000,
-                           ramp_down_sp=1000)
-            right_wheel.position = 0
-            right_wheel.run_position_limited(position_sp=position, speed_sp=800,
-                           stop_mode=Motor.STOP_MODE.BRAKE, ramp_up_sp=1000,
-                           amp_down_sp=1000)
+            result["message"] = movements.run_position_limited(left_wheel,
+                                                        right_wheel, position)
         else:
             left_wheel.run_forever(speed * -1, regulation_mode=False)
             right_wheel.run_forever(speed * -1, regulation_mode=False)

@@ -57,18 +57,26 @@ Acceptable values for *direction*:
 
 ### Examples
 
+#### Action successfully completed
+
     $ GET http://192.168.1.16:5000/move/forward/50
     {"message": "OK", "direction": "forward", "action": "move"}
 
 In this case the HTTP status code returned is 200.
+
+#### Unable to understand the request
 
     $ GET http://192.168.1.16:5000/move/nowhere
     {"message": "Unknown direction", "direction": "nowhere", "action": "move"}
 
 In this case the HTTP status code returned is 400.
 
+#### Hit a wall
 
-## Retrieve values from sensors
+    $ GET http://192.168.1.16:5000/move/forward?blocks=25
+    {"action": "move", "direction": "forward", "message": "hit_wall"}
+
+## Retrieve values from sensors (not yet implemented)
 
     $ GET http://192.168.1.16:5000/sensor/<sensor_name>
 
