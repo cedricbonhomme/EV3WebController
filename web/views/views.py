@@ -14,7 +14,7 @@ __author__ = "Cedric Bonhomme"
 __version__ = "$Revision: 0.4 $"
 __date__ = "$Date: 2014/12/15$"
 __revision__ = "$Date: 2015/11/04 $"
-__copyright__ = "Copyright (c) 2014-2015 Cédric BOnhomme"
+__copyright__ = "Copyright (c) 2014-2015 Cédric Bonhomme"
 __license__ = ""
 
 from flask import render_template, current_app, request, session, \
@@ -27,6 +27,7 @@ from ev3.ev3dev import Motor
 import conf
 from web.decorators import to_response
 from web import app
+from web.lib import movements
 from web import right_wheel, left_wheel, button, ir_sensor, color_sensor
 
 login_manager = LoginManager(app)
