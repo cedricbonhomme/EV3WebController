@@ -76,10 +76,16 @@ In this case the HTTP status code returned is 400.
     $ GET http://192.168.1.16:5000/move/forward?blocks=25
     {"action": "move", "direction": "forward", "message": "hit_wall"}
 
+If a wall is detected the current action is stopped and the server
+will return the message "hit_wall".
+
 #### End of the labyrinth end
 
     $ GET http://192.168.1.16:5000/move/forward?blocks=20
     {"action": "move", "direction": "forward", "message": "in_target"}
+
+If the red color is detected the current action is stopped and the server
+will return the message "in_target".
 
 ## Retrieve values from sensors (not yet implemented)
 
