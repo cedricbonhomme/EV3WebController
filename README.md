@@ -79,7 +79,7 @@ In this case the HTTP status code returned is 400.
 If a wall is detected the current action is stopped and the server
 will return the message "hit_wall".
 
-#### End of the labyrinth end
+#### End of the labyrinth
 
     $ GET http://192.168.1.16:5000/move/forward?blocks=20
     {"action": "move", "direction": "forward", "message": "in_target"}
