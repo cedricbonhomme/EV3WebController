@@ -16,6 +16,7 @@ from flask import Flask
 from ev3.ev3dev import Motor
 #from ev3.lego import LargeMotor
 from ev3.lego import TouchSensor
+from ev3.lego import ColorSensor
 from ev3.lego import InfraredSensor
 
 import conf
@@ -32,11 +33,13 @@ right_wheel = None
 left_wheel  = None
 button = None
 ir_sensor = None
+color_sensor = None
 try:
     right_wheel = Motor(port=Motor.PORT.B)
     left_wheel = Motor(port=Motor.PORT.C)
     button = TouchSensor()
     ir_sensor = InfraredSensor()
+    color_sensor = ColorSensor()
 except Exception as e:
     pass#raise Exception('You must run the application on the EV3.')
 

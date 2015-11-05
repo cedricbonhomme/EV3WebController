@@ -11,9 +11,9 @@
 # ***** END LICENSE BLOCK *****
 
 __author__ = "Cedric Bonhomme"
-__version__ = "$Revision: 0.3 $"
+__version__ = "$Revision: 0.4 $"
 __date__ = "$Date: 2014/12/15$"
-__revision__ = "$Date: 2015/10/31 $"
+__revision__ = "$Date: 2015/11/04 $"
 __copyright__ = "Copyright (c) 2014-2015 Cédric BOnhomme"
 __license__ = ""
 
@@ -27,7 +27,7 @@ from ev3.ev3dev import Motor
 import conf
 from web.decorators import to_response
 from web import app
-from web import right_wheel, left_wheel, button, ir_sensor
+from web import right_wheel, left_wheel, button, ir_sensor, color_sensor
 
 login_manager = LoginManager(app)
 login_manager.login_view = 'index'
@@ -123,6 +123,11 @@ def sensor(sensor_name=""):
     """
     if sensor_name == "ir_sensor":
         return {"distance": ir_sensor.prox}
+    elif sensor_name == "color_sensor":
+        return {"rgb": color_sensor.rgb,
+                "ambiant": color_sensor.ambiant,
+                "reflect": color_sensor.reflect,
+                "mode": color_sensor.mode}
     elif sensor_name == "button":
         pass
     else:
