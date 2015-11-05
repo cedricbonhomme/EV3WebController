@@ -50,7 +50,6 @@ def authentication_required(e):
 @login_manager.user_loader
 def load_user(id):
     # Return an instance of the User model
-    #return models.User.objects(id=id).first()
     pass
 
 
@@ -59,6 +58,8 @@ def load_user(id):
 @to_response
 def move(direction="forward", speed=800):
     """
+    This endpoint manages the different 'move action': 'forward', 'backward',
+    'left', 'right' and 'stop'.
     """
     result = {
                 "action": "move",
@@ -89,13 +90,14 @@ def move(direction="forward", speed=800):
 
     elif direction == 'left':
         speed = 600
-        left_wheel.run_forever(speed, regulation_mode=False)
-        right_wheel.run_forever(speed * -1, regulation_mode=False)
+        movements.rotate(left_wheel, right_wheel, 90, -90)
+        #left_wheel.run_forever(speed, regulation_mode=False)
+        #right_wheel.run_forever(speed * -1, regulation_mode=False)
 
     elif direction == 'right':
         speed = 600
-        left_wheel.run_forever(speed * -1, regulation_mode=False)
-        right_wheel.run_forever(speed, regulation_mode=False)
+        #left_wheel.run_forever(speed * -1, regulation_mode=False)
+        #right_wheel.run_forever(speed, regulation_mode=False)
 
     elif direction == 'stop':
         left_wheel.stop()

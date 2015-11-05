@@ -20,7 +20,7 @@ __license__ = ""
 import time
 from ev3.ev3dev import Motor
 
-from web import button
+from web import button, color_sensor
 
 def stop(motorA, motorB):
     """
@@ -28,6 +28,21 @@ def stop(motorA, motorB):
     """
     motorA.stop()
     motorB.stop()
+
+def check_stop_condition(motorA, motorB):
+    """
+    Wait for the completion of the command before sending the result.
+    """
+    while "running" in motorA.state.split(" ") and \
+                        "running" in motorB.state.split(" "):
+        time.sleep(0.1)
+        if button.is_pushed:
+            stop(motorA, motorB)
+            return "hit_wall"
+        if color_sensor.colors[color_sensor.color] == "red":
+            stop(motorA, motorB)
+            return "in_target"
+    return "OK"
 
 def run_position_limited(motorA, motorB, position):
     """
@@ -41,11 +56,18 @@ def run_position_limited(motorA, motorB, position):
     motorB.run_position_limited(position_sp=position, speed_sp=800,
                    stop_mode=Motor.STOP_MODE.BRAKE, ramp_up_sp=1000,
                    amp_down_sp=1000)
-    # Wait for the completion of the command before sending the result
-    while "running" in motorA.state.split(" ") and \
-                        "running" in motorB.state.split(" "):
-        time.sleep(0.1)
-        if button.is_pushed:
-            stop(motorA, motorB)
-            return "hit_wall"
-    return "OK"
+    return check_stop_condition(motorA, motorB)
+
+def rotate(motorA, motorB, position1, position2):
+    """
+    Rotate.
+    """
+    motorA.position_sp = 0
+    motorA.run_position_limited(position_sp=position1, speed_sp=800,
+                   stop_mode=Motor.STOP_MODE.BRAKE, ramp_up_sp=1000,
+                   ramp_down_sp=1000)
+    motorB.position_sp = 90
+    motorB.run_position_limited(position_sp=position2, speed_sp=800,
+                   stop_mode=Motor.STOP_MODE.BRAKE, ramp_up_sp=1000,
+                   amp_down_sp=1000)
+    return check_stop_condition(motorA, motorB)
