@@ -59,8 +59,8 @@ Acceptable values for *direction*:
 
 #### Action successfully completed
 
-    $ GET http://192.168.1.16:5000/move/forward/50
-    {"message": "OK", "direction": "forward", "action": "move"}
+    $ GET http://192.168.1.16:5000/move/forward
+    {"action": "move", "direction": "forward", "message": "OK"}
 
 In this case the HTTP status code returned is 200.
 
@@ -75,6 +75,11 @@ In this case the HTTP status code returned is 400.
 
     $ GET http://192.168.1.16:5000/move/forward?blocks=25
     {"action": "move", "direction": "forward", "message": "hit_wall"}
+
+#### End of the labyrinth end
+
+    $ GET http://192.168.1.16:5000/move/forward?blocks=20
+    {"action": "move", "direction": "forward", "message": "in_target"}
 
 ## Retrieve values from sensors (not yet implemented)
 
