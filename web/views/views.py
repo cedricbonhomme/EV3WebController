@@ -97,10 +97,12 @@ def move(direction="forward", speed=800):
             right_wheel.run_forever(speed * -1, regulation_mode=False)
 
     elif direction == 'left':
+        speed = 600
         left_wheel.run_forever(speed, regulation_mode=False)
         right_wheel.run_forever(speed * -1, regulation_mode=False)
 
     elif direction == 'right':
+        speed = 600
         left_wheel.run_forever(speed * -1, regulation_mode=False)
         right_wheel.run_forever(speed, regulation_mode=False)
 
