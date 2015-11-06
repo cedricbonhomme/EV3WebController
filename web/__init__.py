@@ -41,6 +41,7 @@ try:
     ir_sensor = InfraredSensor()
     color_sensor = ColorSensor()
 except Exception as e:
+    print e
     pass#raise Exception('You must run the application on the EV3.')
 
 from web import views
