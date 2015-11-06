@@ -1,3 +1,2 @@
-smbus-cffi
 Flask
 Flask-Login
