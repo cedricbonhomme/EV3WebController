@@ -36,6 +36,34 @@ Then on the robot:
 Launch the web server:
 
     $ python runserver.py
+    * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+    * Restarting with stat
+
+# Launch EV3WebController at boot
+
+In order to get EV3WebController start at boot, just create a new systemd
+service.
+
+First create the file */etc/systemd/system/brickrc.service*:
+
+    [Unit]
+    Description=EV3WebController
+    After=multi-user.target
+
+    [Install]
+    WantedBy=multi-user.target
+
+    [Service]
+    Type=oneshot
+    RemainAfterExit=yes
+    ExecStart=/root/EV3WebController/run.sh
+
+Then enable the new service:
+
+    $ systemctl daemon-reload
+    $ systemctl enable brickrc.service
+    $ systemctl restart brickrc.service
+
 
 # How to use the interface
 
