@@ -11,9 +11,9 @@
 # ***** END LICENSE BLOCK *****
 
 __author__ = "Cedric Bonhomme"
-__version__ = "$Revision: 0.1 $"
+__version__ = "$Revision: 0.2 $"
 __date__ = "$Date: 2015/11/05$"
-__revision__ = "$Date: 2015/11/05 $"
+__revision__ = "$Date: 2015/11/08 $"
 __copyright__ = "Copyright (c) 2014-2015 Cédric Bonhomme"
 __license__ = ""
 
