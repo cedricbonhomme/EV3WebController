@@ -69,9 +69,9 @@ Then enable the new service:
 
 ## Move the robot
 
-    $ GET http://192.168.1.16:5000/move/<direction>/<speed=60>
+    $ GET http://192.168.1.16:5000/move/<direction>/<speed=800>
 
-The value of *speed* is optional. Default is 60.
+The value of *speed* is optional. Default is 800.
 
 Acceptable values for *direction*:
 
