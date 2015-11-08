@@ -1,5 +1,12 @@
 EV3WebController project news
 
+0.5 (2015-11-08)
+* EV3WebController is now started at the system boot with systemd;
+* by default left/right rotations are 90 degrees;
+* added support of the color sensor (in order to detect the arrival line);
+* misc adjustments in the framework of the Science Festival;
+* cleaned the code;
+
 0.4 (2015-11-04)
 * it is now possible to run the robot for a limited position in forward an
 backward;
