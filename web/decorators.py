@@ -13,7 +13,7 @@
 import json
 from functools import wraps
 from threading import Thread
-from flask import Response, request, session, jsonify, current_app
+from flask import Response
 from web.lib.utils import default_handler
 
 def async(f):
@@ -26,17 +26,17 @@ def async(f):
         thr.start()
     return wrapper
 
-
 def to_response(func):
-    """Will cast results of func as a result, and try to extract
-    a status_code for the Response object"""
+    """
+    Cast results of func as a result, and try to extract
+    a status_code for the Response object.
+    """
+    @wraps(func)
     def wrapper(*args, **kwargs):
         status_code = 200
         result = func(*args, **kwargs)
         if isinstance(result, Response):
             return result
-        if isinstance(result, list) and len(result) == 1:
-            result = result[0]
         elif isinstance(result, tuple):
             result, status_code = result
         return Response(json.dumps(result, default=default_handler),

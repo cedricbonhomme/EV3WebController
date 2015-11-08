@@ -118,15 +118,15 @@ def move(direction="forward", speed=800):
 
 
 @app.route('/sensor/<sensor_name>', methods=['GET'])
+@to_response
 def sensor(sensor_name=""):
     """
+    Returns the value of the selected sensor.
     """
     if sensor_name == "ir_sensor":
         return {"distance": ir_sensor.prox}
     elif sensor_name == "color_sensor":
         return {"rgb": color_sensor.rgb,
-                "ambiant": color_sensor.ambiant,
-                "reflect": color_sensor.reflect,
                 "mode": color_sensor.mode}
     elif sensor_name == "button":
         pass
@@ -136,4 +136,7 @@ def sensor(sensor_name=""):
 
 @app.route('/', methods=['GET'])
 def index():
+    """
+    Graphical Web interface to command the robot.
+    """
     return render_template('index.html')
