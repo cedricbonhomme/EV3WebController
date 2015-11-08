@@ -20,8 +20,6 @@ is working perfectly out of the box.
 
 ## Installation of EV3WebController and the requirements
 
-Then on the robot:
-
     $ ssh root@192.168.1.16
     $ wget https://bootstrap.pypa.io/get-pip.py
     $ python get-pip.py
