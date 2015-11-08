@@ -75,8 +75,8 @@ def move(direction="forward", speed=800):
             result["message"] = movements.run_position_limited(left_wheel,
                                                         right_wheel, position)
         else:
-            left_wheel.run_forever(speed * 1, regulation_mode=False)
-            right_wheel.run_forever(speed * 1, regulation_mode=False)
+            left_wheel.run_forever(speed * -1, regulation_mode=False)
+            right_wheel.run_forever(speed * -1, regulation_mode=False)
 
     elif direction == 'backward':
         nb_blocks = request.args.get("blocks", None)
@@ -85,8 +85,8 @@ def move(direction="forward", speed=800):
             result["message"] = movements.run_position_limited(left_wheel,
                                                         right_wheel, position)
         else:
-            left_wheel.run_forever(speed * -1, regulation_mode=False)
-            right_wheel.run_forever(speed * -1, regulation_mode=False)
+            left_wheel.run_forever(speed * 1, regulation_mode=False)
+            right_wheel.run_forever(speed * 1, regulation_mode=False)
 
     elif direction == 'left':
         speed = 600
