@@ -10,11 +10,15 @@ Tested with Python 3.4 and Python 2.7.
 
 # Installation
 
+## Installation of the system
+
 First, install [ev3dev](http://www.ev3dev.org) on your
 Lego Mindstorms EV3 brick.
 
 For the network I recommend the Wireless Nano Adapter *Edimax EW-7811Un* which
 is working perfectly out of the box.
+
+## Installation of EV3WebController and the requirements
 
 Then on the robot:
 
@@ -36,7 +40,7 @@ Then on the robot:
     $ rm -Rf python-ev3-master/
     $ cp conf/conf.cfg-sample conf/conf.cfg
 
-Launch the web server:
+Launch EV3WebController:
 
     $ python runserver.py
     * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
