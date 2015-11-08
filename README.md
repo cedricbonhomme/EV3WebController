@@ -131,6 +131,8 @@ Acceptable values for *sensor_name*:
 
     $ GET http://192.168.1.16:5000/sensor/ir_sensor
     {"distance": 12}
+    $ GET http://192.168.1.16:5000/sensor/color_sensor
+    {"rgb": [78, 31, 15], "mode": "RGB-RAW"}
 
 # Donation
 
