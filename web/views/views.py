@@ -18,39 +18,26 @@ __copyright__ = "Copyright (c) 2014-2015 Cédric Bonhomme"
 __license__ = ""
 
 import time
-from flask import render_template, current_app, request, session, \
-    url_for, redirect, g, send_from_directory, make_response, abort, Markup
-from flask.ext.login import LoginManager, login_user, logout_user, \
-    login_required, current_user, AnonymousUserMixin
+from flask import render_template, request, session, url_for, redirect
 
 from ev3.ev3dev import Motor
 
-import conf
 from web.decorators import to_response
 from web.lib import movements
 from web import app
-from web.lib import movements
 from web import right_wheel, left_wheel, button, ir_sensor, color_sensor
 
-login_manager = LoginManager(app)
-login_manager.login_view = 'index'
-login_manager.login_message = 'Please log in to access this page.'
-login_manager.login_message_category = 'danger'
 
 @app.errorhandler(403)
 def authentication_failed(e):
     flash('You do not have enough rights.', 'danger')
     return redirect(url_for('index'))
 
+
 @app.errorhandler(401)
 def authentication_required(e):
     flash('Authenticated required.', 'info')
     return redirect(url_for('index'))
-
-@login_manager.user_loader
-def load_user(id):
-    # Return an instance of the User model
-    pass
 
 
 @app.route('/move/<direction>', methods=['GET'])
