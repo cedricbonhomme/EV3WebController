@@ -90,14 +90,21 @@ def move(direction="forward", speed=800):
 
     elif direction == 'left':
         speed = 600
-        movements.rotate(left_wheel, right_wheel, 90, -90)
-        #left_wheel.run_forever(speed, regulation_mode=False)
-        #right_wheel.run_forever(speed * -1, regulation_mode=False)
+        forever = request.args.get("forever", None)
+        if None is forever:
+            movements.rotate(left_wheel, right_wheel, 90, -90)
+        else:
+            left_wheel.run_forever(speed * -1, regulation_mode=False)
+            right_wheel.run_forever(speed, regulation_mode=False)
 
     elif direction == 'right':
         speed = 600
-        #left_wheel.run_forever(speed * -1, regulation_mode=False)
-        #right_wheel.run_forever(speed, regulation_mode=False)
+        forever = request.args.get("forever", None)
+        if None is forever:
+            movements.rotate(left_wheel, right_wheel, -90, 90)
+        else:
+            left_wheel.run_forever(speed, regulation_mode=False)
+            right_wheel.run_forever(speed * -1, regulation_mode=False)
 
     elif direction == 'stop':
         left_wheel.stop()
