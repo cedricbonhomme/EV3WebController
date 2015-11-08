@@ -1,3 +1,3 @@
 #! /usr/bin/env bash
 
-nohup python runserver.py &
+nohup python /root/EV3WebController/runserver.py &

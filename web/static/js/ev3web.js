@@ -39,7 +39,7 @@ $(document).ready(function() {
         console.log('ArrowLeft down')
         var ip = document.domain
         var power = 60
-        var ajax_url = "http://" + ip + ":5000/move/left"
+        var ajax_url = "http://" + ip + ":5000/move/left?forever=1"
 
         $.ajax({
             type: "GET",
@@ -56,7 +56,7 @@ $(document).ready(function() {
         console.log('ArrowRight down')
         var ip = document.domain
         var power = 60
-        var ajax_url = "http://" + ip + ":5000/move/right"
+        var ajax_url = "http://" + ip + ":5000/move/right?forever=1"
 
         $.ajax({
             type: "GET",
