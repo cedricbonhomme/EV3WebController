@@ -21,7 +21,10 @@ Then on the robot:
     $ ssh root@192.168.1.16
     $ wget https://bootstrap.pypa.io/get-pip.py
     $ python get-pip.py
-    $ git clone https://git.list.lu/science-festival-2015/EV3WebController.git
+    $ wget https://bitbucket.org/cedricbonhomme/ev3webcontroller/get/master.tar.gz
+    $ tar -xzvf master.tar.gz
+    $ rm master.tar.gz
+    $ mv cedricbonhomme-ev3webcontroller-* EV3WebController
     $ cd EV3WebController/
     $ pip install -r requirements.txt
     $ wget https://github.com/topikachu/python-ev3/archive/master.tar.gz
