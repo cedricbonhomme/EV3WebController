@@ -43,7 +43,7 @@ def authentication_required(e):
 @app.route('/move/<direction>', methods=['GET'])
 @app.route('/move/<direction>/<int:speed>', methods=['GET'])
 @to_response
-def move(direction="forward", speed=800):
+def move(direction="forward", speed=60):
     """
     This endpoint manages the different 'move action': 'forward', 'backward',
     'left', 'right' and 'stop'.
@@ -72,12 +72,10 @@ def move(direction="forward", speed=800):
             result["message"] = movements.run_position_limited(left_wheel,
                                                         right_wheel, position)
         else:
-            print(speed)
             left_wheel.run_forever(speed * 1, regulation_mode=False)
             right_wheel.run_forever(speed * 1, regulation_mode=False)
 
     elif direction == 'left':
-        speed = 600
         forever = request.args.get("forever", None)
         if None is forever:
             movements.rotate(left_wheel, right_wheel, -310, 310, 90, 0)
@@ -86,7 +84,6 @@ def move(direction="forward", speed=800):
             right_wheel.run_forever(speed, regulation_mode=False)
 
     elif direction == 'right':
-        speed = 600
         forever = request.args.get("forever", None)
         if None is forever:
             movements.rotate(left_wheel, right_wheel, 310, -310, 0, 90)
