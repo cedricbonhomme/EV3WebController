@@ -41,10 +41,11 @@ try:
     ir_sensor = InfraredSensor()
     color_sensor = ColorSensor()
 except Exception as e:
-    print e
-    pass#raise Exception('You must run the application on the EV3.')
+    raise e
 
 right_wheel.position = 0
 left_wheel.position = 0
+right_wheel.stop()
+left_wheel.stop()
 
 from web import views

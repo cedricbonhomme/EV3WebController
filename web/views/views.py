@@ -41,7 +41,7 @@ def authentication_required(e):
 
 
 @app.route('/move/<direction>', methods=['GET'])
-@app.route('/move/<direction>/<speed>', methods=['GET'])
+@app.route('/move/<direction>/<int:speed>', methods=['GET'])
 @to_response
 def move(direction="forward", speed=800):
     """
@@ -62,8 +62,8 @@ def move(direction="forward", speed=800):
             result["message"] = movements.run_position_limited(left_wheel,
                                                         right_wheel, position)
         else:
-            left_wheel.run_forever(speed * -1, regulation_mode=False)
-            right_wheel.run_forever(speed * -1, regulation_mode=False)
+            left_wheel.run_forever(speed * -1, regulation_mode=True)
+            right_wheel.run_forever(speed * -1, regulation_mode=True)
 
     elif direction == 'backward':
         nb_blocks = request.args.get("blocks", None)
@@ -72,6 +72,7 @@ def move(direction="forward", speed=800):
             result["message"] = movements.run_position_limited(left_wheel,
                                                         right_wheel, position)
         else:
+            print(speed)
             left_wheel.run_forever(speed * 1, regulation_mode=False)
             right_wheel.run_forever(speed * 1, regulation_mode=False)
 
@@ -79,7 +80,7 @@ def move(direction="forward", speed=800):
         speed = 600
         forever = request.args.get("forever", None)
         if None is forever:
-            movements.rotate(left_wheel, right_wheel, -300, 300, 90, 0)
+            movements.rotate(left_wheel, right_wheel, -310, 310, 90, 0)
         else:
             left_wheel.run_forever(speed * -1, regulation_mode=False)
             right_wheel.run_forever(speed, regulation_mode=False)
@@ -88,7 +89,7 @@ def move(direction="forward", speed=800):
         speed = 600
         forever = request.args.get("forever", None)
         if None is forever:
-            movements.rotate(left_wheel, right_wheel, 300, -300, 0, 90)
+            movements.rotate(left_wheel, right_wheel, 310, -310, 0, 90)
         else:
             left_wheel.run_forever(speed, regulation_mode=False)
             right_wheel.run_forever(speed * -1, regulation_mode=False)
