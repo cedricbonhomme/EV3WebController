@@ -15,6 +15,9 @@ Tested with Python 3.4 and Python 2.7.
 First, install [ev3dev](http://www.ev3dev.org) on your
 Lego Mindstorms EV3 brick.
 
+During our tests we used *ev3-ev3dev-jessie-2015-09-13* with
+*python-ev3 0.0.3.0*.
+
 For the network I recommend the Wireless Nano Adapter *Edimax EW-7811Un* which
 is working perfectly out of the box.
 
