@@ -38,11 +38,21 @@ def check_stop_condition(motorA, motorB):
         time.sleep(0.1)
         if button.is_pushed:
             stop(motorA, motorB)
+            time.sleep(0.5)
+            motorA.position = 0
+            motorA.run_position_limited(position_sp=180, speed_sp=800,
+                   stop_mode=Motor.STOP_MODE.BRAKE, ramp_up_sp=1000,
+                   ramp_down_sp=1000)
+            motorB.position = 0
+            motorB.run_position_limited(position_sp=180, speed_sp=800,
+                   stop_mode=Motor.STOP_MODE.BRAKE, ramp_up_sp=1000,
+                   amp_down_sp=1000)
             return "hit_wall"
         if color_sensor.colors[color_sensor.color] == "red":
             stop(motorA, motorB)
             return "in_target"
     return "OK"
+
 
 def run_position_limited(motorA, motorB, position):
     """

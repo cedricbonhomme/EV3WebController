@@ -45,7 +45,7 @@ except Exception as e:
 
 right_wheel.position = 0
 left_wheel.position = 0
-right_wheel.stop()
-left_wheel.stop()
+right_wheel.reset()
+left_wheel.reset()
 
 from web import views
