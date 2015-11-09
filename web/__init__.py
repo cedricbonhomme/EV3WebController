@@ -44,4 +44,7 @@ except Exception as e:
     print e
     pass#raise Exception('You must run the application on the EV3.')
 
+right_wheel.position = 0
+left_wheel.position = 0
+
 from web import views
