@@ -11,9 +11,9 @@
 # ***** END LICENSE BLOCK *****
 
 __author__ = "Cedric Bonhomme"
-__version__ = "$Revision: 0.2 $"
+__version__ = "$Revision: 0.3 $"
 __date__ = "$Date: 2015/11/05$"
-__revision__ = "$Date: 2015/11/08 $"
+__revision__ = "$Date: 2015/11/10 $"
 __copyright__ = "Copyright (c) 2014-2015 Cédric Bonhomme"
 __license__ = ""
 
@@ -28,6 +28,7 @@ def stop(motorA, motorB):
     """
     motorA.stop()
     motorB.stop()
+    time.sleep(0.6)
 
 def check_stop_condition(motorA, motorB):
     """
@@ -40,7 +41,6 @@ def check_stop_condition(motorA, motorB):
         if button.is_pushed:
             # stop the motor
             stop(motorA, motorB)
-            time.sleep(0.5)
             # go a few centimers backward
             motorA.position = 0
             motorA.run_position_limited(position_sp=180, speed_sp=800,
@@ -57,6 +57,8 @@ def check_stop_condition(motorA, motorB):
         if color_sensor.colors[color_sensor.color] == "red":
             stop(motorA, motorB)
             result_message.append("in_target")
+    else:
+        time.sleep(0.5)
     return ";".join(result_message) if len(result_message) != 0 else "OK"
 
 

@@ -11,13 +11,12 @@
 # ***** END LICENSE BLOCK *****
 
 __author__ = "Cedric Bonhomme"
-__version__ = "$Revision: 0.5 $"
+__version__ = "$Revision: 0.6 $"
 __date__ = "$Date: 2014/12/15$"
-__revision__ = "$Date: 2015/11/08 $"
+__revision__ = "$Date: 2015/11/10 $"
 __copyright__ = "Copyright (c) 2014-2015 Cédric Bonhomme"
 __license__ = ""
 
-import time
 from flask import render_template, request, session, url_for, redirect
 
 from ev3.ev3dev import Motor
