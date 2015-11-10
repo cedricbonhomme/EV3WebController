@@ -43,11 +43,11 @@ def check_stop_condition(motorA, motorB):
             stop(motorA, motorB)
             # go a few centimers backward
             motorA.position = 0
-            motorA.run_position_limited(position_sp=180, speed_sp=800,
+            motorA.run_position_limited(position_sp=180, speed_sp=500,
                    stop_mode=Motor.STOP_MODE.BRAKE, ramp_up_sp=1000,
                    ramp_down_sp=1000)
             motorB.position = 0
-            motorB.run_position_limited(position_sp=180, speed_sp=800,
+            motorB.run_position_limited(position_sp=180, speed_sp=500,
                    stop_mode=Motor.STOP_MODE.BRAKE, ramp_up_sp=1000,
                    amp_down_sp=1000)
             while "running" in motorA.state.split(" ") and \
@@ -67,11 +67,11 @@ def run_position_limited(motorA, motorB, position):
     Run for a limitied position.
     """
     motorA.position = 0
-    motorA.run_position_limited(position_sp=position, speed_sp=800,
+    motorA.run_position_limited(position_sp=position, speed_sp=500,
                    stop_mode=Motor.STOP_MODE.BRAKE, ramp_up_sp=1000,
                    ramp_down_sp=1000)
     motorB.position = 0
-    motorB.run_position_limited(position_sp=position, speed_sp=800,
+    motorB.run_position_limited(position_sp=position, speed_sp=500,
                    stop_mode=Motor.STOP_MODE.BRAKE, ramp_up_sp=1000,
                    amp_down_sp=1000)
     return check_stop_condition(motorA, motorB)
@@ -81,11 +81,11 @@ def rotate(motorA, motorB, position1, position2, initial_position1, initial_posi
     Rotate.
     """
     motorA.position = initial_position1
-    motorA.run_position_limited(position_sp=position1, speed_sp=800,
+    motorA.run_position_limited(position_sp=position1, speed_sp=500,
                    stop_mode=Motor.STOP_MODE.BRAKE, ramp_up_sp=1000,
                    ramp_down_sp=1000)
     motorB.position= initial_position2
-    motorB.run_position_limited(position_sp=position2, speed_sp=800,
+    motorB.run_position_limited(position_sp=position2, speed_sp=500,
                    stop_mode=Motor.STOP_MODE.BRAKE, ramp_up_sp=1000,
                    amp_down_sp=1000)
     return check_stop_condition(motorA, motorB)
