@@ -47,6 +47,9 @@ def check_stop_condition(motorA, motorB):
             motorB.run_position_limited(position_sp=180, speed_sp=800,
                    stop_mode=Motor.STOP_MODE.BRAKE, ramp_up_sp=1000,
                    amp_down_sp=1000)
+            while "running" in motorA.state.split(" ") and \
+                                "running" in motorB.state.split(" "):
+                time.sleep(0.1)
             return "hit_wall"
         if color_sensor.colors[color_sensor.color] == "red":
             stop(motorA, motorB)
