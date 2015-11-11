@@ -81,11 +81,11 @@ def rotate(motorA, motorB, position1, position2, initial_position1, initial_posi
     Rotate.
     """
     motorA.position = initial_position1
-    motorA.run_position_limited(position_sp=position1, speed_sp=500,
+    motorA.run_position_limited(position_sp=position1, speed_sp=600,
                    stop_mode=Motor.STOP_MODE.BRAKE, ramp_up_sp=1000,
                    ramp_down_sp=1000)
     motorB.position= initial_position2
-    motorB.run_position_limited(position_sp=position2, speed_sp=500,
+    motorB.run_position_limited(position_sp=position2, speed_sp=600,
                    stop_mode=Motor.STOP_MODE.BRAKE, ramp_up_sp=1000,
                    amp_down_sp=1000)
     return check_stop_condition(motorA, motorB)
