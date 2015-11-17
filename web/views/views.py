@@ -77,7 +77,7 @@ def move(direction="forward", speed=60):
     elif direction == 'left':
         forever = request.args.get("forever", None)
         if None is forever:
-            movements.rotate(left_wheel, right_wheel, -360, 360, 140, 0)
+            movements.rotate(left_wheel, right_wheel, -360, 360, 180, 0)
         else:
             left_wheel.run_forever(speed * -1, regulation_mode=False)
             right_wheel.run_forever(speed, regulation_mode=False)
@@ -85,7 +85,7 @@ def move(direction="forward", speed=60):
     elif direction == 'right':
         forever = request.args.get("forever", None)
         if None is forever:
-            movements.rotate(left_wheel, right_wheel, 360, -360, 0, 140)
+            movements.rotate(left_wheel, right_wheel, 360, -360, 0, 180)
         else:
             left_wheel.run_forever(speed, regulation_mode=False)
             right_wheel.run_forever(speed * -1, regulation_mode=False)

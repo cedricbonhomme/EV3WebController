@@ -43,12 +43,12 @@ def check_stop_condition(motorA, motorB):
             stop(motorA, motorB)
             # go a few centimers backward
             motorA.position = 0
-            motorA.run_position_limited(position_sp=180, speed_sp=500,
-                   stop_mode=Motor.STOP_MODE.BRAKE, ramp_up_sp=1000,
+            motorA.run_position_limited(position_sp=220, speed_sp=350,
+                   stop_mode=Motor.STOP_MODE.BRAKE, ramp_up_sp=20,
                    ramp_down_sp=1000)
             motorB.position = 0
-            motorB.run_position_limited(position_sp=180, speed_sp=500,
-                   stop_mode=Motor.STOP_MODE.BRAKE, ramp_up_sp=1000,
+            motorB.run_position_limited(position_sp=220, speed_sp=350,
+                   stop_mode=Motor.STOP_MODE.BRAKE, ramp_up_sp=20,
                    amp_down_sp=1000)
             while "running" in motorA.state.split(" ") and \
                                 "running" in motorB.state.split(" "):
@@ -67,12 +67,12 @@ def run_position_limited(motorA, motorB, position):
     Run for a limitied position.
     """
     motorA.position = 0
-    motorA.run_position_limited(position_sp=position, speed_sp=500,
-                   stop_mode=Motor.STOP_MODE.BRAKE, ramp_up_sp=1000,
+    motorA.run_position_limited(position_sp=position, speed_sp=350,
+                   stop_mode=Motor.STOP_MODE.BRAKE, ramp_up_sp=20,
                    ramp_down_sp=1000)
     motorB.position = 0
-    motorB.run_position_limited(position_sp=position, speed_sp=500,
-                   stop_mode=Motor.STOP_MODE.BRAKE, ramp_up_sp=1000,
+    motorB.run_position_limited(position_sp=position, speed_sp=350,
+                   stop_mode=Motor.STOP_MODE.BRAKE, ramp_up_sp=20,
                    amp_down_sp=1000)
     return check_stop_condition(motorA, motorB)
 

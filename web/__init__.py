@@ -28,6 +28,9 @@ app.debug = True
 # Create a random secrey key so we can use sessions
 app.config['SECRET_KEY'] = os.urandom(12)
 
+from ev3.ev3dev import Tone
+alarm = Tone()
+
 #head = None#Motor(port=Motor.PORT.A)
 right_wheel = None
 left_wheel  = None
@@ -38,10 +41,14 @@ try:
     right_wheel = Motor(port=Motor.PORT.B)
     left_wheel = Motor(port=Motor.PORT.C)
     button = TouchSensor()
-    ir_sensor = InfraredSensor()
+    #ir_sensor = InfraredSensor()
     color_sensor = ColorSensor()
+    alarm.play(200)
 except Exception as e:
+    alarm.play(200)
+    alarm.play(200)
     raise e
+
 
 right_wheel.position = 0
 left_wheel.position = 0
