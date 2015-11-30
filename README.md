@@ -3,7 +3,7 @@ EV3WebController
 
 # Presentation
 
-[EV3WebController](https://bitbucket.org/cedricbonhomme/ev3webcontroller)
+[EV3WebController](https://github.com/cedricbonhomme/EV3WebController)
 provides a Web interface in order to control the Lego Mindstorms EV3 robot.
 
 Tested with Python 3.4 and Python 2.7.
