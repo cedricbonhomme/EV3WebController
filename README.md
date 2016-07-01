@@ -26,11 +26,10 @@ is working perfectly out of the box.
     $ ssh root@192.168.1.16
     $ wget https://bootstrap.pypa.io/get-pip.py
     $ python get-pip.py
-    $ wget https://bitbucket.org/cedricbonhomme/ev3webcontroller/get/master.tar.gz
+    $ wget https://github.com/cedricbonhomme/EV3WebController/archive/master.tar.gz
     $ tar -xzvf master.tar.gz
     $ rm master.tar.gz
-    $ mv cedricbonhomme-ev3webcontroller-* EV3WebController
-    $ cd EV3WebController/
+    $ cd EV3WebController-master/
     $ pip install -r requirements.txt
     $ wget https://github.com/topikachu/python-ev3/archive/master.tar.gz
     $ tar -xzvf master.tar.gz
@@ -136,12 +135,6 @@ Acceptable values for *sensor_name*:
     {"distance": 12}
     $ GET http://192.168.1.16:5000/sensor/color_sensor
     {"rgb": [78, 31, 15], "mode": "RGB-RAW"}
-
-# Donation
-
-If you wish and if you like *EV3WebController*, you can donate via bitcoin
-[1GVmhR9fbBeEh7rP1qNq76jWArDdDQ3otZ](https://blockexplorer.com/address/1GVmhR9fbBeEh7rP1qNq76jWArDdDQ3otZ).
-Thank you!
 
 # License
 
