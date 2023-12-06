@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "ev3webcontroller"
+version = "0.1.0"
+description = "EV3WebController provides a Web interface in order to control the Lego Mindstorms EV3 robot."
+authors = ["Cédric Bonhomme <cedric@cedricbonhomme.org>"]
+license = "GPL-3.0-or-later"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+flask = "^3.0.0"
+python-ev3dev2 = "^2.1.0.post1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
